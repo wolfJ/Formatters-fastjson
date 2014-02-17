@@ -1,5 +1,4 @@
 ﻿using System;
-using DragonScale.Console;
 using DragonScale.Portable;
 
 namespace RoleGame
