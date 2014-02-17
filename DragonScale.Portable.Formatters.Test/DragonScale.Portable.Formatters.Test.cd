@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<ClassDiagram Zoom="1" MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="RoleGame.MapCell" Collapsed="False">
+    <Position X="0.5" Y="4.8" Width="1.437741" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="DragonScale.Portable.Formatters.Test.PersonXX" Collapsed="False">
+    <Position X="0.5" Y="3.2" Width="2.059943" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="DragonScale.Portable.Formatters.Test.PeopleX" Collapsed="False">
+    <Position X="0.5" Y="0.5" Width="1.632751" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="DragonScale.Portable.Formatters.Test.WindowsDefaultSettingsTest" Collapsed="False">
+    <Position X="0.5" Y="9.4" Width="3.478796" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="RoleGame.Treasure" Collapsed="False">
+    <Position X="0.5" Y="6.2" Width="1.484938" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="DragonScale.Portable.Formatters.Test.FormatterTest" Collapsed="False">
+    <Position X="0.5" Y="12.2" Width="1.510988" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="DragonScale.Portable.Formatters.Test.Person" Collapsed="False">
+    <Position X="0.5" Y="13.6" Width="1.219259" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="DragonScale.Portable.Formatters.Test.PersonT" Collapsed="False">
+    <Position X="0.5" Y="16" Width="1.49007" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="DragonScale.Portable.Formatters.Test.TestType" Collapsed="False">
+    <Position X="0.5" Y="19" Width="1.282101" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+    </Compartments>
+  </Class>
+</ClassDiagram>
