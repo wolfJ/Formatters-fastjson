@@ -52,7 +52,7 @@
     <Compile Include="WindowsDefaultSettingsTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DragonScalePortable\trunk\DragonScale.Portable\Frameworks\DragonScale.Portable.Formatters\DragonScale.Portable.Formatters.csproj">
+    <ProjectReference Include="..\DragonScale.Portable.Formatters\DragonScale.Portable.Formatters.csproj">
       <Project>{3C9CC0B8-BDC4-46A8-909E-40D4981F4A40}</Project>
       <Name>DragonScale.Portable.Formatters</Name>
     </ProjectReference>

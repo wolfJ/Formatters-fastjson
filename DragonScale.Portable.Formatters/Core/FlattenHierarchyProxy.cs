@@ -1,4 +1,14 @@
-﻿using System;
+﻿/***
+ * Author: Wolf
+ * E-mail: wumingdlz@hotmail.com
+ * Created Time: 2012-10-01
+ * Copyright: If you want to use this module, please retain this comment.
+ * You can change any code of this file and add your name to the developers list,
+ * but you cannot delete this comment or modify all content above.
+ * Here's the Developers List:
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +19,6 @@ namespace DragonScale.Portable.Formatters
 {
     public sealed class FlattenHierarchyProxy
     {
-
         [DebuggerDisplay("{Value}", Name = "{Name,nq}", Type = "{Type.ToString(),nq}")]
         public struct Member
         {
@@ -41,9 +50,7 @@ namespace DragonScale.Portable.Formatters
             get
             {
                 if (_memberList == null)
-                {
                     _memberList = BuildMemberList().ToArray();
-                }
                 return _memberList;
             }
         }
@@ -58,10 +65,7 @@ namespace DragonScale.Portable.Formatters
         {
             var list = new List<Member>();
             if (_target == null)
-            {
                 return list;
-            }
-
             //var flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
             List<string> nameList = new List<string>();
             var type = _target.GetType();

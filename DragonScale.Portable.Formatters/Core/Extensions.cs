@@ -1,6 +1,6 @@
 /***
- * Author: Aliqi
- * E-mail: aliqi@hotmail.com
+ * Author: Wolf
+ * E-mail: wumingdlz@hotmail.com
  * Created Time: 2012-10-01
  * Copyright: If you want to use this module, please retain this comment.
  * You can change any code of this file and add your name to the developers list,
@@ -9,31 +9,26 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 
 namespace DragonScale.Portable.Formatters
 {
     /// <summary>
-    /// Formatter static class.
+    /// Extensions static class.
     /// </summary>
-    public static partial class FormatterFactory
+    public static partial class Extensions
     {
-        #region Private methods
         [EditorBrowsable(EditorBrowsableState.Never)]
         private static bool isType(Type type)
         {
             return type == typeof(Type) || type.IsSubclassOf(typeof(Type));
         }
-        #endregion
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         internal static void ErrorLog(string msg)
         {
             if (Logger != null)
-            {
                 Logger.Error(msg);
-            }
         }
     }
 }

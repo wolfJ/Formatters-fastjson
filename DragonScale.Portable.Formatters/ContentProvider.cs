@@ -1,6 +1,6 @@
 ﻿/***
- * Author: Aliqi
- * E-mail: aliqi@hotmail.com
+ * Author: Wolf
+ * E-mail: wumingdlz@hotmail.com
  * Created Time: 2012-10-01
  * Copyright: If you want to use this module, please retain this comment.
  * You can change any code of this file and add your name to the developers list,
@@ -36,6 +36,11 @@ namespace DragonScale.Portable.Formatters
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private Dictionary<Type, List<PropertyInfo>> cacheAllProperties =
+            new Dictionary<Type, List<PropertyInfo>>();
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private IList<FieldInfo> ignoredFields =
             new List<FieldInfo>();
 
@@ -43,6 +48,12 @@ namespace DragonScale.Portable.Formatters
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Dictionary<Type, List<FieldInfo>> cacheFields =
             new Dictionary<Type, List<FieldInfo>>();
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private Dictionary<Type, List<FieldInfo>> cacheAllFields =
+            new Dictionary<Type, List<FieldInfo>>();
+
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -108,11 +119,15 @@ namespace DragonScale.Portable.Formatters
                 return propertyInfos.ToArray();
             // Creating infos
             var properties = RaiseGetProperties(type);
+
             var result = new List<PropertyInfo>();
             if (properties != null)
+            {
                 foreach (var property in properties)
                     if (!IgnoreProperty(property))
                         result.Add(property);
+                cacheAllProperties.Add(type, properties.ToList());
+            }
             // adding result to Cache
             cacheProperties.Add(type, result);
             return result.ToArray();
@@ -133,9 +148,13 @@ namespace DragonScale.Portable.Formatters
             var fields = RaiseGetFields(type);
             var result = new List<FieldInfo>();
             if (fields != null)
+            {
                 foreach (var field in fields)
                     if (!IgnoreField(field))
                         result.Add(field);
+
+                cacheAllFields.Add(type, fields.ToList());
+            }
             // adding result to Cache
             cacheFields.Add(type, result);
             return result.ToArray();
@@ -202,6 +221,52 @@ namespace DragonScale.Portable.Formatters
                 return true;
             return false;
         }
+
+        internal virtual bool IsIgnoreProperty(Type type, string propertyName)
+        {
+            PropertyInfo[] properties = null;
+            if (cacheAllProperties.ContainsKey(type))
+            {
+                properties = cacheAllProperties[type].ToArray();
+            }
+            else
+            {
+                properties = RaiseGetProperties(type);
+            }
+            if (properties != null)
+                foreach (var property in properties)
+                {
+                    if (property.Name.Equals(propertyName))
+                    {
+                        return IgnoreProperty(property);
+                    }
+                }
+            return false;
+        }
+
+        internal virtual bool IsIgnoreField(Type type, string fieldName)
+        {
+            FieldInfo[] fields = null;
+            if (cacheAllFields.ContainsKey(type))
+            {
+                fields = cacheAllFields[type].ToArray();
+            }
+            else
+            {
+                fields = RaiseGetFields(type);
+            }
+
+            if (fields != null)
+                foreach (var field in fields)
+                {
+                    if (field.Name.Equals(fieldName))
+                    {
+                        return IgnoreField(field);
+                    }
+                }
+            return false;
+        }
+
 
         /// <summary>
         /// Determines whether [contains ignored attributes] in [the specified member].

@@ -9,80 +9,6 @@ using System.IO;
 
 namespace DragonScale.Portable.Formatters.Json
 {
-    internal struct PropertyMetadata
-    {
-        public MemberInfo Info;
-        public bool IsField;
-        public Type Type;
-    }
-
-    internal struct ArrayMetadata
-    {
-        private Type element_type;
-        private bool is_array;
-        private bool is_list;
-
-
-        public Type ElementType
-        {
-            get
-            {
-                if (element_type == null)
-                    return typeof(JsonData);
-
-                return element_type;
-            }
-
-            set { element_type = value; }
-        }
-
-        public bool IsArray
-        {
-            get { return is_array; }
-            set { is_array = value; }
-        }
-
-        public bool IsList
-        {
-            get { return is_list; }
-            set { is_list = value; }
-        }
-    }
-
-    internal struct ObjectMetadata
-    {
-        private Type element_type;
-        private bool is_dictionary;
-
-        private IDictionary<string, PropertyMetadata> properties;
-
-
-        public Type ElementType
-        {
-            get
-            {
-                if (element_type == null)
-                    return typeof(JsonData);
-
-                return element_type;
-            }
-
-            set { element_type = value; }
-        }
-
-        public bool IsDictionary
-        {
-            get { return is_dictionary; }
-            set { is_dictionary = value; }
-        }
-
-        public IDictionary<string, PropertyMetadata> Properties
-        {
-            get { return properties; }
-            set { properties = value; }
-        }
-    }
-
     internal delegate void ExporterFunc(object obj, JsonWriter writer);
     /// <summary>
     /// ExporterFunc
@@ -108,7 +34,7 @@ namespace DragonScale.Portable.Formatters.Json
     public delegate JsonWrapper WrapperFactory();
 
 
-    class JsonMapper
+    internal class JsonMapper
     {
 
         #region Fields
@@ -521,22 +447,26 @@ namespace DragonScale.Portable.Formatters.Json
             }
             else if (reader.Token == JsonToken.ObjectStart)
             {
+                string jsonProperty = null;
                 bool isReferanceLoop = (JsonMapper.settings.ReferenceLoopHandling == ReferenceLoopHandling.Serialize);
                 //create instance
-                bool hasRead = false;
+                bool hasRead = false, hasReadJsonProperty = false, hasReadJsonPropertyValue = false;
                 if (settings.SerializeMetaData != SerializeMetaData.Ignore)
                 {
                     reader.Read();
                     hasRead = true;
                     if (reader.Token == JsonToken.ObjectEnd)
                     {
+                        return null;
                     }
                     else
                     {
-                        string property = (string)reader.Value;
-                        if (OBJECT_SUB_TYPE.Equals(property))
+                        jsonProperty = (string)reader.Value;
+                        hasReadJsonProperty = true;
+                        if (OBJECT_SUB_TYPE.Equals(jsonProperty))
                         {
                             var subTypeStr = (string)ReadValue(typeof(string), reader);
+                            hasReadJsonPropertyValue = true;
                             if (settings.SerializeMetaData == SerializeMetaData.SerializeTiny)
                             {
                                 if (settings.JsonMetaData.ContainsKey(subTypeStr))
@@ -559,6 +489,31 @@ namespace DragonScale.Portable.Formatters.Json
                                 throw new Exception("Can`t load Type [" + subTypeStr + "]. \nYou can implement function Settings.LoadTypeFromAssemblies !");
                             }
                             instance = Activator.CreateInstance(objectSubType);
+                            reader.Read();//重新read next;
+                        }
+                        else if (OBJECT_ID.Equals(jsonProperty))
+                        {
+                            //do un reference loop
+                            int obj_id_int = (Int32)ReadValue(typeof(Int32), reader);
+                            hasReadJsonPropertyValue = true;
+                            if (isReferanceLoop)
+                            {
+                                if (!reader.ObjFlagDict.Keys.Contains(OBJECT_ID + ":" + obj_id_int))
+                                {
+                                    instance = Activator.CreateInstance(inst_type);
+                                    reader.ObjFlagDict.Add(OBJECT_ID + ":" + obj_id_int, instance);
+                                }
+                                else
+                                {
+                                    //if this object has added, then change instance, and continue to read JsonToken.ObjectEnd.
+                                    instance = reader.ObjFlagDict[OBJECT_ID + ":" + obj_id_int];
+                                    //return instance;
+                                }
+                            }
+                            else
+                            {
+                                instance = Activator.CreateInstance(inst_type);
+                            }
                             reader.Read();//重新read next;
                         }
                         else
@@ -593,7 +548,15 @@ namespace DragonScale.Portable.Formatters.Json
                         break;
 
 
-                    string property = (string)reader.Value;
+                    string property = null;
+                    if (!hasReadJsonPropertyValue || hasReadJsonPropertyValue)
+                    {
+                        property = (string)reader.Value;
+                    }
+                    else
+                    {
+                        property = jsonProperty;
+                    }
                     property = readPropertyName(inst_type, property);
 
                     //check Referance Loop
@@ -640,7 +603,7 @@ namespace DragonScale.Portable.Formatters.Json
                                     }
                                     catch (Exception e)
                                     {
-                                        FormatterFactory.ErrorLog(e.Message);
+                                        Extensions.ErrorLog(e.Message);
                                     }
                                     p_info.SetValue(
                                         instance,
@@ -673,6 +636,10 @@ namespace DragonScale.Portable.Formatters.Json
                             }
                         }
                     }
+                    //else if (IsIgnorePorperty(inst_type, property) || IsIgnoreField(inst_type, property))
+                    //{
+                    //    continue;//如果在过滤列表中，则直接过滤 //TODO;虽然想要这功能，但实现有问题。。。
+                    //}
                     else
                     {
                         if (!t_data.IsDictionary)
@@ -700,6 +667,16 @@ namespace DragonScale.Portable.Formatters.Json
             }
 
             return instance;
+        }
+
+        private static bool IsIgnorePorperty(Type inst_type, string property)
+        {
+            return settings.ContentProvider.IsIgnoreProperty(inst_type, property);
+        }
+
+        private static bool IsIgnoreField(Type inst_type, string property)
+        {
+            return settings.ContentProvider.IsIgnoreField(inst_type, property);
         }
 
         private static string readPropertyName(Type inst_type, string property)
@@ -1074,7 +1051,7 @@ namespace DragonScale.Portable.Formatters.Json
             Type obj_type = obj.GetType();
             if (custom_exporters_table.ContainsKey(obj_type))
             {
-                ExporterFunc exporter = custom_exporters_table[obj_type];
+                var exporter = custom_exporters_table[obj_type];
                 exporter(obj, writer);
 
                 return;
@@ -1083,7 +1060,7 @@ namespace DragonScale.Portable.Formatters.Json
             // If not, maybe there's a base exporter
             if (base_exporters_table.ContainsKey(obj_type))
             {
-                ExporterFunc exporter = base_exporters_table[obj_type];
+                var exporter = base_exporters_table[obj_type];
                 exporter(obj, writer);
 
                 return;
@@ -1137,7 +1114,7 @@ namespace DragonScale.Portable.Formatters.Json
                 writeObjectStart(writer, obj_type);
             }
 
-            foreach (PropertyMetadata p_data in props)
+            foreach (var p_data in props)
             {
                 string name = p_data.Info.Name;
                 object value = null;
@@ -1148,20 +1125,15 @@ namespace DragonScale.Portable.Formatters.Json
                 }
                 else
                 {
-                    PropertyInfo p_info = (PropertyInfo)p_data.Info;
+                    var p_info = (PropertyInfo)p_data.Info;
                     if (p_info.CanRead)
-                    {
                         value = p_info.GetValue(obj, null);
-                    }
                     else
-                    {
                         canRead = false;
-                    }
                 }
                 if (canRead)
                 {
-                    //如果设置了忽略NULL信息，则跳过。。。。
-                    if (settings.IgnoreNullMemberInfo == IgnoreNullMemberInfo.Ignore && value == null)
+                    if (settings.IsNullIgnored && value == null)
                         continue;
                     writePropertyName(writer, obj_type, name);
                     WriteValue(value, writer, writer_is_private, depth + 1);
@@ -1199,9 +1171,7 @@ namespace DragonScale.Portable.Formatters.Json
                     if (settings.SerializeMetaData == SerializeMetaData.SerializeTiny)
                     {
                         if (settings.JsonMetaData.Values.Contains(assemblyQualifiedName))
-                        {
                             assemblyQualifiedName = settings.JsonMetaData.GetKeyByValue(assemblyQualifiedName);
-                        }
                         else
                         {
                             var current = settings.JsonMetaData.Count.ToString();
@@ -1216,21 +1186,19 @@ namespace DragonScale.Portable.Formatters.Json
 
         #endregion
 
-
         public static string ToJson(object obj, Settings settings)
         {
+            if (settings == null)
+                settings = new JsonFormatterSettings();
             JsonMapper.settings = settings;
             lock (static_writer_lock)
             {
                 static_writer.Reset();
-
                 WriteValue(obj, static_writer, true, 0);
-
                 static_writer.ObjFlagList.Clear();//clear cache
                 return static_writer.ToString();
             }
         }
-
 
         public static JsonData ToObject(JsonReader reader, Settings settings = null)
         {
@@ -1270,10 +1238,16 @@ namespace DragonScale.Portable.Formatters.Json
 
         public static T ToObject<T>(string json, Settings settings = null)
         {
+            return (T)ToObject(typeof(T), json, settings);
+        }
+
+        public static object ToObject(Type type, string json, Settings settings = null)
+        {
+            if (settings == null)
+                settings = new JsonFormatterSettings();
             JsonMapper.settings = settings;
             JsonReader reader = new JsonReader(json);
-
-            return (T)ReadValue(typeof(T), reader);
+            return ReadValue(type, reader);
         }
 
         public static object ToObject(string json, Type type, Settings settings = null)
@@ -1283,7 +1257,6 @@ namespace DragonScale.Portable.Formatters.Json
 
             return ReadValue(type, reader);
         }
-
 
         public static JsonWrapper ToWrapper(WrapperFactory factory,
                                               JsonReader reader)

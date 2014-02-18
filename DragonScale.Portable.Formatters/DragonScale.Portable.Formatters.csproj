@@ -19,20 +19,20 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\..\Dependance\DragonScaleFramework\trunk\Debug\</OutputPath>
+    <OutputPath>..\Dependance\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>E:\Work\DS\Dependance\DragonScaleFramework\trunk\Debug\DragonScale.Portable.Formatters.XML</DocumentationFile>
+    <DocumentationFile>..\Dependance\Debug\DragonScale.Portable.Formatters.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\..\Dependance\DragonScaleFramework\trunk\Release\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>E:\Work\DS\Dependance\DragonScaleFramework\trunk\Release\DragonScale.Portable.Formatters.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\DragonScale.Portable.Formatters.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
@@ -42,26 +42,25 @@
   <ItemGroup>
     <Compile Include="ContentProvider.cs" />
     <Compile Include="Core\FlattenHierarchyProxy.cs" />
-    <Compile Include="Core\IgnoredContentCollection.cs" />
     <Compile Include="Core\RenameMapping.cs" />
     <Compile Include="DefaultContentProvider.cs" />
     <Compile Include="Core\Extensions.cs" />
-    <Compile Include="Core\IgnoredProperties.cs" />
     <Compile Include="Core\ITypeConverter.cs" />
-    <Compile Include="FormatterFactory.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Json\Extensions.cs" />
     <Compile Include="Json\GenericTypeModel.cs" />
+    <Compile Include="Json\Internal\JsonMetaDatas.cs" />
     <Compile Include="Json\JsonWrapper.cs" />
     <Compile Include="Json\JsonData.cs" />
-    <Compile Include="Json\JsonException.cs" />
-    <Compile Include="Json\JsonFormatter.cs" />
+    <Compile Include="Json\Internal\JsonException.cs" />
+    <Compile Include="JsonFormatter.cs" />
     <Compile Include="Json\JsonMapper.cs" />
     <Compile Include="Json\JsonMetaData.cs" />
-    <Compile Include="Json\JsonOutputFormatter.cs" />
+    <Compile Include="Json\JsonArrangement.cs" />
     <Compile Include="Json\JsonReader.cs" />
     <Compile Include="Json\JsonWriter.cs" />
     <Compile Include="Json\Lexer.cs" />
-    <Compile Include="Json\ParserToken.cs" />
+    <Compile Include="Json\Internal\ParserToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>

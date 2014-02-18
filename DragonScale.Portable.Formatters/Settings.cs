@@ -1,6 +1,6 @@
 ﻿/***
- * Author: Aliqi
- * E-mail: aliqi@hotmail.com
+ * Author: Wolf
+ * E-mail: wumingdlz@hotmail.com
  * Created Time: 2012-10-01
  * Copyright: If you want to use this module, please retain this comment.
  * You can change any code of this file and add your name to the developers list,
@@ -9,13 +9,13 @@
  */
 
 using DragonScale.Portable.Formatters.Core;
+using DragonScale.Portable.Formatters.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Text;
-using DragonScale.Portable.Formatters.Json;
 using System.Reflection;
 
 namespace DragonScale.Portable.Formatters
@@ -28,7 +28,6 @@ namespace DragonScale.Portable.Formatters
     {
 
         #region Fields
-
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private IList<Type> _attributesToIgnore;
@@ -48,12 +47,10 @@ namespace DragonScale.Portable.Formatters
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private int _max_nesting_depth = 100;
-
         public event LoadTypeFromAssemblies LoadTypeFromAssemblies;
         #endregion
 
         #region Properties
-
         /// <summary>
         /// Gets or sets the max nesting depth.
         /// </summary>
@@ -72,12 +69,12 @@ namespace DragonScale.Portable.Formatters
         public SerializeMetaData SerializeMetaData { get; set; }
 
         /// <summary>
-        /// Gets or sets the json output formater enum.
+        /// Gets or sets the output arrangement.
         /// </summary>
         /// <value>
-        /// The json output formater enum.
+        /// The output arrangement.
         /// </value>
-        public JsonOutputFormatterEnum JsonOutputFormaterEnum { get; set; }
+        public Arrangement OutputArrangement { get; set; }
 
         /// <summary>
         ///   All float numbers and date/time values are stored as text according to the Culture. Default is CultureInfo.InvariantCulture.
@@ -91,18 +88,11 @@ namespace DragonScale.Portable.Formatters
         /// </summary>
         public Encoding Encoding { get; set; }
 
-
-        /// <summary>
-        /// Gets the json meta data.
-        /// </summary>
-        /// <value>
-        /// The json meta data.
-        /// </value>
         internal JsonMetaData JsonMetaData
         {
             get
             {
-                if (_jsonMetaData == null && SerializeMetaData == Formatters.SerializeMetaData.SerializeTiny)
+                if (_jsonMetaData == null && SerializeMetaData == SerializeMetaData.SerializeTiny)
                     _jsonMetaData = new JsonMetaData();
                 return _jsonMetaData;
             }
@@ -119,10 +109,7 @@ namespace DragonScale.Portable.Formatters
                 if (_contentProvider == null) _contentProvider = new DefaultContentProvider(this);
                 return _contentProvider;
             }
-            set
-            {
-                _contentProvider = value;
-            }
+            set { _contentProvider = value; }
         }
 
         /// <summary>
@@ -146,25 +133,17 @@ namespace DragonScale.Portable.Formatters
         /// </summary>
         public ReferenceLoopHandling ReferenceLoopHandling
         {
-            get
-            {
-                //if (_ReferenceLoopHandling == null) _ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                return _referenceLoopHandling;
-            }
-            set
-            {
-                _referenceLoopHandling = value;
-            }
+            get { return _referenceLoopHandling; }
+            set { _referenceLoopHandling = value; }
         }
 
         /// <summary>
-        /// Gets or sets the ignore null member info.
+        /// Gets or sets a value indicating whether this instance is null then ignored when formatting.
         /// </summary>
         /// <value>
-        /// The ignore null member info.
+        /// <c>true</c> if this instance is null ignored; otherwise, <c>false</c>.
         /// </value>
-        public IgnoreNullMemberInfo IgnoreNullMemberInfo { get; set; }
-
+        public bool IsNullIgnored { get; set; }
 
         #region 暂时未实现
         ///// <summary>
@@ -190,7 +169,6 @@ namespace DragonScale.Portable.Formatters
         //public bool IncludePublicKeyTokenInTypeName { get; set; }
         #endregion
 
-
         #endregion
 
         #region Ctor
@@ -202,6 +180,8 @@ namespace DragonScale.Portable.Formatters
             IgnoredAttributes.Add(typeof(TransientAttribute));
             Encoding = Encoding.UTF8;
             Culture = CultureInfo.InvariantCulture;
+            OutputArrangement = Arrangement.Beautify;
+            IsNullIgnored = true;
             //IncludeAssemblyVersionInTypeName = true;
             //IncludeCultureInTypeName = true;
             //IncludePublicKeyTokenInTypeName = true;
@@ -216,17 +196,12 @@ namespace DragonScale.Portable.Formatters
         /// <param name="memberName">Name of the member.</param>
         public void AddIgnoreMember(Type type, string memberName)
         {
-            var field = type.GetField(memberName, this.ContentProvider.GetBindingFlags());
-            if (field == null)
-            {
+            var field = type.GetField(memberName, ContentProvider.GetBindingFlags());
+            if (field != null)
                 _contentProvider.IgnoredFields.Add(field);
-            }
-
-            var prop = type.GetProperty(memberName, this.ContentProvider.GetBindingFlags());
-            if (prop == null)
-            {
+            var prop = type.GetProperty(memberName, ContentProvider.GetBindingFlags());
+            if (prop != null)
                 _contentProvider.IgnoredProperties.Add(prop);
-            }
         }
 
         /// <summary>
@@ -250,7 +225,7 @@ namespace DragonScale.Portable.Formatters
         {
             if (string.IsNullOrEmpty(metadataJson))
                 throw new JsonException("SerializeMetaDataModeJson can not be null or empty!");
-            var dict = metadataJson.ToObject<Dictionary<string, string>>(ContentFormat.Json);
+            var dict = metadataJson.ContentToObject<Dictionary<string, string>>(ContentFormat.Json);
             if (dict == null)
                 throw new JsonException("SerializeMetaDataModeJson can not be convert JsonMetaData!");
             _jsonMetaData = new JsonMetaData(dict);
@@ -269,10 +244,7 @@ namespace DragonScale.Portable.Formatters
                 JsonMetaData[key] = replaceType.AssemblyQualifiedName;
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         public void AddKeyRenameMappingObjToJson(Type type, string memberName, string renameMemberName)
@@ -284,9 +256,7 @@ namespace DragonScale.Portable.Formatters
                 throw new JsonException(string.Format("renameMemberName :{0} is Formatters`s key world!", renameMemberName));
 
             if (!_contentProvider.KeyRenameMapping.ContainsKey(type))
-            {
                 _contentProvider.KeyRenameMapping.Add(type, new List<RenameMapping>());
-            }
             _contentProvider.KeyRenameMapping[type].Add(new RenameMapping(memberName, renameMemberName));
         }
 
@@ -296,21 +266,17 @@ namespace DragonScale.Portable.Formatters
                 throw new JsonException("parameters can not be null or empty!");
             if (memberName.Equals(jsonMemberName)) return;
             if (!_contentProvider.KeyRenameMapping.ContainsKey(type))
-            {
                 _contentProvider.KeyRenameMapping.Add(type, new List<RenameMapping>());
-            }
             _contentProvider.KeyRenameMapping[type].Add(new RenameMapping(memberName, jsonMemberName));
         }
         #endregion
-
-        #region Private Methods
 
         private bool validateJsonKeyWorld(string renameMemberName)
         {
             if (renameMemberName.StartsWith("$"))
                 return false;
             return true;
-        }
+        } 
 
         List<System.Reflection.Assembly> asses = null;
         internal Type DoLoadTypeFromAssemblies(string typeQualifiedName)
@@ -324,7 +290,6 @@ namespace DragonScale.Portable.Formatters
             retType = typeModel.GetModelType(asses);
             return retType;
         }
-        #endregion
     }
 
     /// <summary>

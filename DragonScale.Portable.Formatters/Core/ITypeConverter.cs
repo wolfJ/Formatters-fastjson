@@ -1,6 +1,6 @@
 /***
- * Author: Aliqi
- * E-mail: aliqi@hotmail.com
+ * Author: Wolf
+ * E-mail: wumingdlz@hotmail.com
  * Created Time: 2012-10-01
  * Copyright: If you want to use this module, please retain this comment.
  * You can change any code of this file and add your name to the developers list,

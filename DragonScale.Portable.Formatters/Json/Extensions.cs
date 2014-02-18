@@ -1,6 +1,6 @@
 /***
- * Author: Aliqi
- * E-mail: aliqi@hotmail.com
+ * Author: Wolf
+ * E-mail: wumingdlz@hotmail.com
  * Created Time: 2012-10-01
  * Copyright: If you want to use this module, please retain this comment.
  * You can change any code of this file and add your name to the developers list,
@@ -9,9 +9,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using DragonScale.Portable.Formatters.Json;
 
 namespace DragonScale.Portable.Formatters
@@ -21,19 +18,20 @@ namespace DragonScale.Portable.Formatters
     /// </summary>
     public static partial class FormatterFactory
     {
-        //ToJsonEx
+        //ToJsonEx //TODO;这个方法的用途。
         private static string ToJsonEx(object obj, Settings settings = null)
         {
             if (settings == null)
                 settings = new JsonFormatterSettings();
             var json = JsonMapper.ToJson(obj, settings);
-            if (JsonOutputFormatterEnum.NoFormatterOutput.Equals(settings.JsonOutputFormaterEnum))
+            if (Arrangement.None.Equals(settings.OutputArrangement))
             {
                 return json;
             }
             else
             {
-                return new JsonOutputFormatter().PrettyPrint(json);
+                return json;
+                //return new JsonOutputFormatter().PrettyPrint(json);
             }
         }
 
@@ -54,8 +52,6 @@ namespace DragonScale.Portable.Formatters
     }
 
     #region Settings area
-
-
     /// <summary>
     /// Serialize MetaData with Ignore, SerializeBurst or SerializeTiny Mode
     /// </summary>
@@ -95,39 +91,20 @@ namespace DragonScale.Portable.Formatters
     }
 
     /// <summary>
-    /// Ignore Default MemberInfo
+    /// Arrangement enum.
     /// </summary>
-    public enum IgnoreNullMemberInfo
+    [Flags]
+    public enum Arrangement
     {
         /// <summary>
-        /// The serialize
+        /// Do nothing
         /// </summary>
-        Serialize,
+        None,
 
         /// <summary>
-        /// The ignore
+        /// Beautify the output
         /// </summary>
-        Ignore
-    }
-
-
-
-    /// <summary>
-    /// JsonOutputFormater Enum
-    /// </summary>
-    public enum JsonOutputFormatterEnum
-    {
-
-        /// <summary>
-        /// The formatter output
-        /// </summary>
-        FormatterOutput,
-
-
-        /// <summary>
-        /// The no formatter output
-        /// </summary>
-        NoFormatterOutput
+        Beautify
     }
     #endregion
 }

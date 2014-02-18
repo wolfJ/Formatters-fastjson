@@ -9,7 +9,6 @@ namespace DragonScale.Portable.Formatters.Json
 {
     public class JsonData : JsonWrapper, IEquatable<JsonData>
     {
-
         #region Fields
         private IList<JsonData> inst_array;
         private bool inst_boolean;

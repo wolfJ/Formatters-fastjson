@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using DragonScale.Windows.Formatters;
+using DragonScale.Portable.Formatters;
 
 namespace DragonScale.Portable.Formatters.Test
 {
