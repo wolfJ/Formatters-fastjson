@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{26AF7938-DB1A-4426-A9DE-C76918D93342}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DragonScale.Portable</RootNamespace>
+    <AssemblyName>DragonScale.Portable</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile1</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Dependance\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Dependance\Debug\DragonScale.Portable.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\..\Dependance\DragonScaleFramework\trunk\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>E:\Work\DS\Dependance\DragonScaleFramework\trunk\Release\DragonScale.Portable.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\EntryPointAttribute.cs" />
+    <Compile Include="Attributes\ExportAttribute.cs" />
+    <Compile Include="BasicObject.cs" />
+    <Compile Include="Bind\InternalBind.cs" />
+    <Compile Include="Collections\BitArray.cs" />
+    <Compile Include="CrashedEventArgs.cs" />
+    <Compile Include="Attributes\DescriptionAttribute.cs" />
+    <Compile Include="EventHandler.cs" />
+    <Compile Include="Exceptions\RuntimeException.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Formatter.cs" />
+    <Compile Include="Guard.cs" />
+    <Compile Include="Bind\IPropertyChanged.cs" />
+    <Compile Include="Bind\InternalBindCollection.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Bind\PropertyChangedCallback.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Bind\PropertyChangedEventArgs.cs" />
+    <Compile Include="BasicProperty.cs" />
+    <Compile Include="Bind\BindBridge.cs" />
+    <Compile Include="Toolbox\DebugLogger.cs" />
+    <Compile Include="Attributes\TransientAttribute.cs" />
+    <Compile Include="WeakReference.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

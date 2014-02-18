@@ -1,0 +1,547 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DragonScale.Portable.Formatters</name>
+    </assembly>
+    <members>
+        <member name="T:DragonScale.Portable.Formatters.JsonFormatter">
+            <summary>
+            JsonFormatter class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.JsonFormatter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Formatters.JsonFormatter"/> class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.JsonFormatter.#ctor(DragonScale.Portable.Formatters.JsonFormatterSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Formatters.JsonFormatter"/> class.
+            </summary>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.JsonFormatter.ToBytes(System.Object)">
+            <summary>
+            To the bytes.
+            </summary>
+            <param name="obj">The obj.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.JsonFormatter.ToObject(System.Byte[],System.Type)">
+            <summary>
+            To the object.
+            </summary>
+            <param name="bytes">The bytes.</param>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.JsonFormatter.ToObject(System.IO.Stream,System.Type)">
+            <summary>
+            To the object.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.JsonFormatter.Settings">
+            <summary>
+            Gets or sets the settings.
+            </summary>
+            <value>
+            The settings.
+            </value>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.ContentProvider">
+            <summary>
+            ContentProvider abstract class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.ContentProvider.#ctor(DragonScale.Portable.Formatters.Settings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Formatters.ContentProvider"/> class.
+            </summary>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.ContentProvider.GetBindingFlags">
+            <summary>
+            Gets the binding flags.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.ContentProvider.GetProperties(System.Type)">
+            <summary>
+            Gets the properties.
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.ContentProvider.GetFields(System.Type)">
+            <summary>
+            Gets the fields.
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.ContentProvider.RaiseGetProperties(System.Type)">
+            <summary>
+            Raises on the get properties process.
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.ContentProvider.RaiseGetFields(System.Type)">
+            <summary>
+            Raises on the get the get fields process.
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.ContentProvider.IgnoreProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            Determines whether the property should be removed from serialization.
+            </summary>
+            <param name="property">The property.</param>
+            <returns>
+            true if the property:
+            - is in the IgnoredProperties,
+            - contains TransientAttribute,
+            - does not have it's set or get accessor
+            - is indexer
+            </returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.ContentProvider.IgnoreField(System.Reflection.FieldInfo)">
+            <summary>
+            Determines whether the field should be removed from serialization.
+            </summary>
+            <param name="field">The field.</param>
+            <returns>
+             true if the field:
+            - is in the IgnoredFields,
+            - contains TransientAttribute,
+            - is readonly
+            - is const
+            </returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.ContentProvider.ContainsIgnoredAttributes(System.Reflection.MemberInfo)">
+            <summary>
+            Determines whether [contains ignored attributes] in [the specified member].
+            </summary>
+            <param name="member">The member.</param>
+            <returns>
+              <c>true</c> if [contains ignored attributes] in [the specified member]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.ContentProvider.IgnoredProperties">
+            <summary>
+            Gets or sets the ignored properties.
+            </summary>
+            <value>
+            The ignored properties.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.ContentProvider.IgnoredFields">
+            <summary>
+            Gets the ignored fields.
+            </summary>
+            <value>
+            The ignored fields.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.ContentProvider.Settings">
+            <summary>
+            Gets the settings.
+            </summary>
+            <value>
+            The settings.
+            </value>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.Extensions">
+            <summary>
+            Extensions static class.
+            </summary>
+            <summary>
+            Formatters static class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Extensions.ToBytes(System.Object)">
+            <summary>
+            To the bytes.
+            </summary>
+            <param name="obj">The obj.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Extensions.ToObject(System.Byte[],System.Type)">
+            <summary>
+            To the object.
+            </summary>
+            <param name="bytes">The bytes.</param>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Extensions.ToObject``1(System.Byte[])">
+            <summary>
+            To the object.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="bytes">The bytes.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Extensions.ToObject(System.IO.Stream,System.Type)">
+            <summary>
+            To the object.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Extensions.ToObject``1(System.IO.Stream)">
+            <summary>
+            To the object.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="stream">The stream.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Extensions.ToXml(System.Object)">
+            <summary>
+            To XML format content.
+            </summary>
+            <param name="obj">The obj.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Extensions.ToJson(System.Object,DragonScale.Portable.Formatters.Settings)">
+            <summary>
+            To json format content.
+            </summary>
+            <param name="obj"></param>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Extensions.ContentToObject(System.String,System.Type,DragonScale.Portable.Formatters.ContentFormat,DragonScale.Portable.Formatters.Settings)">
+            <summary>
+            From string to object. Default content format is Json.
+            </summary>
+            <param name="source">The source.</param>
+            <param name="type">The type.</param>
+            <param name="format">The format.</param>
+            <param name="settings">The settings.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Extensions.ContentToObject``1(System.String,DragonScale.Portable.Formatters.ContentFormat,DragonScale.Portable.Formatters.Settings)">
+            <summary>
+            From string to object. Default content format is Json.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">The source.</param>
+            <param name="format">The format.</param>
+            <param name="settings">The settings.</param>
+            <returns></returns>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.Extensions.Default">
+            <summary>
+            Gets or sets the default formatter. Set null to get a JsonFormatter as default.
+            </summary>
+            <value>
+            The default formatter.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.Extensions.Logger">
+            <summary>
+            Gets or sets the logger.
+            </summary>
+            <value>
+            The logger.
+            </value>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.Core.RenameMapping">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Core.RenameMapping.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Formatters.Core.RenameMapping"/> class.
+            </summary>
+            <param name="typeMemberName">Name of the type member.</param>
+            <param name="jsonName">Name of the json.</param>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.Core.ITypeConverter">
+            <summary>
+              Converts Type to its string representation and vice versa. The default instance used in the Framework is TypeNameConverter
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Core.ITypeConverter.ToName(System.Type)">
+            <summary>
+              Gives back Type as text.
+            </summary>
+            <param name = "type"></param>
+            <returns>string.Empty if the type is null</returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Core.ITypeConverter.ToType(System.String)">
+            <summary>
+              Gives back Type from the text.
+            </summary>
+            <param name = "typeName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.Settings">
+            <summary>
+            Settings abstract class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Settings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Formatters.Settings"/> class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Settings.AddIgnoreMember(System.Type,System.String)">
+            <summary>
+            Adds the ignore member, include fields and propertys.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="memberName">Name of the member.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Settings.GetSerializeMetaDataModeJson">
+            <summary>
+            Gets the serialized metadata json string.
+            </summary>
+            <returns>metadata json</returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Settings.SetSerializeMetaDataModeJson(System.String)">
+            <summary>
+            Sets the serialize meta data mode json.
+            </summary>
+            <param name="metadataJson">The metadata json.</param>
+            <exception cref="T:DragonScale.Portable.Formatters.Json.JsonException">SerializeMetaDataModeJson can not be empty or null!</exception>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Settings.ReplaceMetaDataMode(System.String,System.Type)">
+            <summary>
+            Replaces the meta data mode.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="replaceType">Type of the replace.</param>
+            <returns>if JsonMetaData do not contains key , then return false; else return true.</returns>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.Settings.MaxNestingDepth">
+            <summary>
+            Gets or sets the max nesting depth.
+            </summary>
+            <value>
+            The max nesting depth.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.Settings.SerializeMetaData">
+            <summary>
+            The serialization of a JSON, can make the metadata of the type can also be serialized
+            </summary>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.Settings.OutputArrangement">
+            <summary>
+            Gets or sets the output arrangement.
+            </summary>
+            <value>
+            The output arrangement.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.Settings.Culture">
+            <summary>
+              All float numbers and date/time values are stored as text according to the Culture. Default is CultureInfo.InvariantCulture.
+              This setting is overridden if you set SimpleValueConverter
+            </summary>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.Settings.Encoding">
+            <summary>
+              Describes format in which the xml file is stored. Default is UTF-8.
+              This setting is overridden if you set XmlWriterSettings
+            </summary>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.Settings.ContentProvider">
+            <summary>
+            ContentProvider
+            </summary>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.Settings.IgnoredAttributes">
+            <summary>
+            All Properties marked with one of the contained attribute-types will be ignored on save.
+            As default, this list contains only TransientAttribute.
+            For performance reasons it would be better to clear this list if this attribute 
+            is not used in serialized classes.
+            </summary>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.Settings.ReferenceLoopHandling">
+            <summary>
+            Reference Loop Handling
+            </summary>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.Settings.IsNullIgnored">
+            <summary>
+            Gets or sets a value indicating whether this instance is null then ignored when formatting.
+            </summary>
+            <value>
+            <c>true</c> if this instance is null ignored; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.BinaryFormatterSettings">
+            <summary>
+            BinaryFormatterSettings class.
+            </summary>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.JsonFormatterSettings">
+            <summary>
+            JsonFormatterSettings class.
+            </summary>
+        </member>
+        <member name="P:DragonScale.Portable.Formatters.JsonFormatterSettings.Default">
+            <summary>
+            Gets the default.
+            </summary>
+            <value>
+            The default.
+            </value>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.XmlFormatterSettings">
+            <summary>
+            XmlFormatterSettings class.
+            </summary>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.Json.JsonArrangement">
+            <summary>
+            JsonArrangement class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.Json.JsonArrangement.Beautify(System.String)">
+            <summary>
+            Beautifies the input.
+            </summary>
+            <param name="input">The input.</param>
+            <returns></returns>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.Json.JsonMetaData">
+            <summary>
+            Json Meta Data
+            </summary>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.FormatterFactory">
+            <summary>
+            FormatterFactory static class.
+            </summary>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.SerializeMetaData">
+            <summary>
+            Serialize MetaData with Ignore, SerializeBurst or SerializeTiny Mode
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Formatters.SerializeMetaData.Ignore">
+            <summary>
+            Ignore Interface MetaData and do not serialize.
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Formatters.SerializeMetaData.SerializeBurst">
+            <summary>
+            The serialize burst
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Formatters.SerializeMetaData.SerializeTiny">
+            <summary>
+            The serialize tiny
+            </summary>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.ReferenceLoopHandling">
+            <summary>
+            Specifies reference loop handling options  .
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Formatters.ReferenceLoopHandling.Serialize">
+            <summary>
+            Serialize loop references.
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Formatters.ReferenceLoopHandling.Ignore">
+            <summary>
+            Ignore loop references and do not serialize.
+            </summary>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.Arrangement">
+            <summary>
+            Arrangement enum.
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Formatters.Arrangement.None">
+            <summary>
+            Do nothing
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Formatters.Arrangement.Beautify">
+            <summary>
+            Beautify the output
+            </summary>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.Json.ExporterFunc`1">
+            <summary>
+            ExporterFunc
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The obj.</param>
+            <param name="writer">The writer.</param>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.Json.ImporterFunc`2">
+            <summary>
+            ImporterFunc
+            </summary>
+            <typeparam name="TJson">The type of the json.</typeparam>
+            <typeparam name="TValue">The type of the value.</typeparam>
+            <param name="input">The input.</param>
+            <returns></returns>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.Json.WrapperFactory">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.ContentFormat">
+            <summary>
+            ContentFormat enum.
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Formatters.ContentFormat.Xml">
+            <summary>
+            The XML format.
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Formatters.ContentFormat.Json">
+            <summary>
+            The json format.
+            </summary>
+        </member>
+        <member name="T:DragonScale.Portable.Formatters.DefaultContentProvider">
+            <summary>
+            DefaultContentProvider class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.DefaultContentProvider.#ctor(DragonScale.Portable.Formatters.Settings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Formatters.DefaultContentProvider"/> class.
+            </summary>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.DefaultContentProvider.RaiseGetProperties(System.Type)">
+            <summary>
+            Raises on the get properties process. Default get action will return which:
+              - are public
+              - are not static (instance properties)
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatters.DefaultContentProvider.RaiseGetFields(System.Type)">
+            <summary>
+            Raises on the get the get fields process. Default get action will return which:
+            - are public
+            - are not static (instance fields)
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -17,11 +17,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Dependance\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\DragonScale.Windows.Formatters.XML</DocumentationFile>
+    <DocumentationFile>..\Dependance\Debug\DragonScale.Windows.Formatters.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,9 +33,6 @@
     <DocumentationFile>..\OutputDlls\DragonScale.Windows.Formatters.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DragonScale.Portable">
-      <HintPath>..\DragonScale.Portable.Formatters\Dependecies\DragonScale.Portable.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
@@ -48,6 +45,10 @@
     <ProjectReference Include="..\..\DragonScalePortable\trunk\DragonScale.Portable\Frameworks\DragonScale.Portable.Formatters\DragonScale.Portable.Formatters.csproj">
       <Project>{3C9CC0B8-BDC4-46A8-909E-40D4981F4A40}</Project>
       <Name>DragonScale.Portable.Formatters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DragonScale.Portable\DragonScale.Portable.csproj">
+      <Project>{26AF7938-DB1A-4426-A9DE-C76918D93342}</Project>
+      <Name>DragonScale.Portable</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

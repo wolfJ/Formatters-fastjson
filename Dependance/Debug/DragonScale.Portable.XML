@@ -1,0 +1,880 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DragonScale.Portable</name>
+    </assembly>
+    <members>
+        <member name="T:DragonScale.Portable.BindBridge">
+            <summary>
+            BindBridge class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.BindBridge.Break">
+            <summary>
+            Breaks the bind connection.
+            </summary>
+        </member>
+        <member name="P:DragonScale.Portable.BindBridge.SourceProperty">
+            <summary>
+            Gets the source property.
+            </summary>
+            <value>
+            The source property.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.BindBridge.TargetProperty">
+            <summary>
+            Gets the target property.
+            </summary>
+            <value>
+            The target property.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.BindBridge.Source">
+            <summary>
+            Gets the source.
+            </summary>
+            <value>
+            The source.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.BindBridge.Target">
+            <summary>
+            Gets the target.
+            </summary>
+            <value>
+            The target.
+            </value>
+        </member>
+        <member name="T:DragonScale.Portable.ExportAttribute">
+            <summary>
+            Describe method exported.
+            </summary>
+        </member>
+        <member name="T:DragonScale.Portable.EntryPointAttribute">
+            <summary>
+            Describe the entry point.
+            </summary>
+        </member>
+        <member name="T:DragonScale.Portable.BasicProperty">
+            <summary>
+            BasicProperty class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.BasicProperty.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="M:DragonScale.Portable.BasicProperty.Register(System.String,System.Type,System.Type)">
+            <summary>
+            Registers the specified basic property.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="ownerType">Type of the owner.</param>
+            <param name="propertyType">Type of the property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.BasicProperty.Register(System.String,System.Type,System.Type,System.Object)">
+            <summary>
+            Registers the specified basic property.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="ownerType">Type of the owner.</param>
+            <param name="propertyType">Type of the property.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns></returns>
+        </member>
+        <member name="P:DragonScale.Portable.BasicProperty.DefaultValue">
+            <summary>
+            Gets the default value.
+            </summary>
+            <value>
+            The default value.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.BasicProperty.OwnerType">
+            <summary>
+            Gets the type of the owner.
+            </summary>
+            <value>
+            The type of the owner.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.BasicProperty.PropertyType">
+            <summary>
+            Gets the type of the property.
+            </summary>
+            <value>
+            The type of the property.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.BasicProperty.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="T:DragonScale.Portable.Logger">
+            <summary>
+            Logger abstract class.
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.LOG">
+            <summary>
+            The log string
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.VERBOSE">
+            <summary>
+            The Verbose string
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.DEBUG">
+            <summary>
+            The Debug string
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.INFO">
+            <summary>
+            The Info string
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.WARN">
+            <summary>
+            The Warn string
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.ERROR">
+            <summary>
+            The Error string
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.FATAL">
+            <summary>
+            The Fatal string
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.CORE">
+            <summary>
+            The Core string
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.VerboseLevel">
+            <summary>
+            The verbose level is 1
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.DebugLevel">
+            <summary>
+            The debug level is 2
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.InfoLevel">
+            <summary>
+            The info level is 3
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.WarnLevel">
+            <summary>
+            The warn level is 4
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.ErrorLevel">
+            <summary>
+            The error level is 5
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.FatalLevel">
+            <summary>
+            The fatal level is 6
+            </summary>
+        </member>
+        <member name="F:DragonScale.Portable.Logger.CoreLevel">
+            <summary>
+            The core level is 0
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.RaiseVerbose(System.String,System.Int32)">
+            <summary>
+            Verboses using the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="level">The 1 level.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.RaiseDebug(System.String,System.Int32)">
+            <summary>
+            Debugs using the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="level">The 2 level.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.RaiseInfo(System.String,System.Int32)">
+            <summary>
+            Infoes using the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="level">The 3 level.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.RaiseWarn(System.String,System.Int32)">
+            <summary>
+            Warns using the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="level">The 4 level.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.RaiseError(System.String,System.Int32)">
+            <summary>
+            Errors using the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="level">The 5 level.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.RaiseFatal(System.String,System.Int32)">
+            <summary>
+            Fatals using the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="level">The 6 level.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.RaiseCore(System.String,System.Int32)">
+            <summary>
+            Cores using the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="level">The 0 level.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.Format(System.String,System.Int32)">
+            <summary>
+            Formats the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="level">The level.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.RaiseLog(System.String,System.Int32)">
+            <summary>
+            Logs using the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="level">The default level is 10.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.Flush">
+            <summary>
+            Flushes everything.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.Log(System.String,System.Int32)">
+            <summary>
+            Logs the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="level">The level.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.Verbose(System.String)">
+            <summary>
+            Verboses the specified message. 1 Level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.Debug(System.String)">
+            <summary>
+            Debugs using the specified message. 2 Level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.Info(System.String)">
+            <summary>
+            Infoes using the specified message. 3 Level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.Warn(System.String)">
+            <summary>
+            Warns using the specified message. 4 Level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.Error(System.String)">
+            <summary>
+            Errors using the specified message. 5 Level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.Fatal(System.String)">
+            <summary>
+            Fatals using the specified message. 6 Level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Logger.Core(System.String)">
+            <summary>
+            Cores the specified message. 0 Level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="P:DragonScale.Portable.Logger.InfoEnabled">
+            <summary>
+            Gets or sets a value indicating whether [info enabled].
+            </summary>
+            <value>
+              <c>true</c> if [info enabled]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Logger.FatalEnabled">
+            <summary>
+            Gets or sets a value indicating whether [fatal enabled].
+            </summary>
+            <value>
+              <c>true</c> if [fatal enabled]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Logger.ErrorEnabled">
+            <summary>
+            Gets or sets a value indicating whether [error enabled].
+            </summary>
+            <value>
+              <c>true</c> if [error enabled]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Logger.WarnEnabled">
+            <summary>
+            Gets or sets a value indicating whether [warn enabled].
+            </summary>
+            <value>
+              <c>true</c> if [warn enabled]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Logger.DebugEnabled">
+            <summary>
+            Gets or sets a value indicating whether [debug enabled].
+            </summary>
+            <value>
+              <c>true</c> if [debug enabled]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Logger.CoreEnabled">
+            <summary>
+            Gets or sets a value indicating whether [core enabled].
+            </summary>
+            <value>
+              <c>true</c> if [core enabled]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Logger.VerboseEnabled">
+            <summary>
+            Gets or sets a value indicating whether [verbose enabled].
+            </summary>
+            <value>
+              <c>true</c> if [verbose enabled]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Logger.LogEnabled">
+            <summary>
+            Gets or sets a value indicating whether [log enabled].
+            </summary>
+            <value>
+              <c>true</c> if [log enabled]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Logger.Enabled">
+            <summary>
+            Gets or sets a value indicating whether [all log options enabled].
+            </summary>
+            <value>
+              <c>true</c> if [all log options enabled]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:DragonScale.Portable.Extensions">
+            <summary>
+            Extensions static class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Extensions.StartsWith(System.Byte[],System.Byte[])">
+            <summary>
+            Check whether the source starts with the value.
+            </summary>
+            <param name="source">The source.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Extensions.EndsWith(System.Byte[],System.Byte[])">
+            <summary>
+            Check whether the source ends with the value.
+            </summary>
+            <param name="source">The source.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Extensions.Take(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Takes the specified range of data from source.
+            </summary>
+            <param name="source">The source.</param>
+            <param name="offset">The offset.</param>
+            <param name="length">The length.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Extensions.HasInterface(System.Type,System.Type)">
+            <summary>
+            Determines whether the specified type has interface.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="interfaceType">Type of the interface.</param>
+            <returns>
+              <c>true</c> if the specified type has interface; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:DragonScale.Portable.Extensions.HasDefaultConstructor(System.Type)">
+            <summary>
+            Determines whether [has default constructor] [the specified type].
+            </summary>
+            <param name="type">The type.</param>
+            <returns>
+              <c>true</c> if [has default constructor] [the specified type]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:DragonScale.Portable.Extensions.IsNullOrTrimedEmpty(System.String)">
+            <summary>
+            Determines whether [the specified string] [is null or trimed empty].
+            </summary>
+            <param name="value">The value.</param>
+            <returns>
+              <c>true</c> if [the specified string value] [is null or trimed empty]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:DragonScale.Portable.WeakReference`1">
+            <summary>
+            WeakReference class.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:DragonScale.Portable.WeakReference`1.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.WeakReference`1"/> class.
+            </summary>
+            <param name="target">The target.</param>
+        </member>
+        <member name="M:DragonScale.Portable.WeakReference`1.#ctor(System.Object,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.WeakReference`1"/> class.
+            </summary>
+            <param name="target">An object to track.</param>
+            <param name="trackResurrection">Indicates when to stop tracking the object. If true, the object is tracked after finalization; if false, the object is only tracked until finalization.</param>
+        </member>
+        <member name="P:DragonScale.Portable.WeakReference`1.Target">
+            <summary>
+            Gets or sets the object (the target) referenced by the current <see cref="T:System.WeakReference"/> object.
+            </summary>
+            <returns>null if the object referenced by the current <see cref="T:System.WeakReference"/> object has been garbage collected; otherwise, a reference to the object referenced by the current <see cref="T:System.WeakReference"/> object.</returns>
+              
+            <exception cref="T:System.InvalidOperationException">The reference to the target object is invalid. This exception can be thrown while setting this property if the value is a null reference or if the object has been finalized during the set operation.</exception>
+        </member>
+        <member name="T:DragonScale.Portable.PropertyChangedEventArgs">
+            <summary>
+            PropertyChangedEventArgs class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.PropertyChangedEventArgs.#ctor(System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.PropertyChangedEventArgs"/> class.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <param name="propertyValue">Value of the property.</param>
+        </member>
+        <member name="P:DragonScale.Portable.PropertyChangedEventArgs.Name">
+            <summary>
+            Gets the name of the property.
+            </summary>
+            <value>
+            The name of the property.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.PropertyChangedEventArgs.Value">
+            <summary>
+            Gets the value of the property.
+            </summary>
+            <value>
+            The value of the property.
+            </value>
+        </member>
+        <member name="T:DragonScale.Portable.CrashedEventArgs">
+            <summary>
+            CrashedEventArgs class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.CrashedEventArgs.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.CrashedEventArgs"/> class.
+            </summary>
+            <param name="e">The e.</param>
+        </member>
+        <member name="P:DragonScale.Portable.CrashedEventArgs.Exception">
+            <summary>
+            Gets the exception.
+            </summary>
+            <value>
+            The exception.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.CrashedEventArgs.Handled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:DragonScale.Portable.CrashedEventArgs"/> is handled.
+            </summary>
+            <value>
+              <c>true</c> if handled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:DragonScale.Portable.Role">
+            <summary>
+            Role abstract class.
+            </summary>
+        </member>
+        <member name="T:DragonScale.Portable.BasicObject">
+            <summary>
+            Basic object for this framework.
+            </summary>
+        </member>
+        <member name="T:DragonScale.Portable.IPropertyChanged">
+            <summary>
+            IPropertyChanged interface.
+            </summary>
+        </member>
+        <member name="E:DragonScale.Portable.IPropertyChanged.PropertyChanged">
+            <summary>
+            Occurs when [property changed].
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.BasicObject.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.BasicObject"/> class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.BasicObject.GetValue(DragonScale.Portable.BasicProperty)">
+            <summary>
+            Gets the value.
+            </summary>
+            <param name="key">The key.</param>
+            <returns>null if there is no such key. Otherwise value.</returns>
+        </member>
+        <member name="M:DragonScale.Portable.BasicObject.SetValue(DragonScale.Portable.BasicProperty,System.Object)">
+            <summary>
+            Sets the value.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:DragonScale.Portable.BasicObject.SetPropertyChangedCallback(DragonScale.Portable.BasicProperty,DragonScale.Portable.PropertyChangedCallback)">
+            <summary>
+            Sets the property changed callback.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="callback">The callback.</param>
+        </member>
+        <member name="M:DragonScale.Portable.BasicObject.Notify(System.String,System.Object)">
+            <summary>
+            Notifies the basic property of target using the specified property name and property value.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <param name="propertyValue">Value of the property.</param>
+        </member>
+        <member name="M:DragonScale.Portable.BasicObject.Unbind(DragonScale.Portable.BindBridge)">
+            <summary>
+            Unbinds the specified bridge.
+            </summary>
+            <param name="bridge">The bridge.</param>
+        </member>
+        <member name="M:DragonScale.Portable.BasicObject.Bind(DragonScale.Portable.BasicProperty,DragonScale.Portable.IPropertyChanged,System.String)">
+            <summary>
+            Binds to source.
+            The specified basic property value changed when the property occured from source.
+            </summary>
+            <param name="targetBasicProp">The basic property in binding target.</param>
+            <param name="source">The source.</param>
+            <param name="srcPropName">Name of the property in source.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.BasicObject.Bind(DragonScale.Portable.BasicProperty,DragonScale.Portable.IPropertyChanged,System.String,DragonScale.Portable.PropertyChangedCallback)">
+            <summary>
+            Binds the specified target basic prop.
+            </summary>
+            <param name="targetBasicProp">The target basic prop.</param>
+            <param name="source">The source.</param>
+            <param name="srcPropName">Name of the SRC prop.</param>
+            <param name="targetPropChangedCallback">The target prop changed callback.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.BasicObject.GetBridge(DragonScale.Portable.BasicProperty,DragonScale.Portable.IPropertyChanged)">
+            <summary>
+            Gets the bridge.
+            </summary>
+            <param name="targetBasicProp">The basic property in binding target.</param>
+            <param name="source">The source.</param>
+            <returns></returns>
+        </member>
+        <member name="E:DragonScale.Portable.BasicObject.PropertyChanged">
+            <summary>
+            Occurs when [property changed].
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Role.Add(DragonScale.Portable.Role)">
+            <summary>
+            Adds the specified role.
+            </summary>
+            <param name="role">The role.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Role.Add(System.Collections.Generic.IEnumerable{DragonScale.Portable.Role})">
+            <summary>
+            Adds the specified roles.
+            </summary>
+            <param name="roles">The roles.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Role.Contains(DragonScale.Portable.Role)">
+            <summary>
+            Determines whether [contains] [the specified role].
+            </summary>
+            <param name="role">The role.</param>
+            <returns>
+              <c>true</c> if [contains] [the specified role]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:DragonScale.Portable.Role.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:DragonScale.Portable.Role.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:DragonScale.Portable.Role.Equals(DragonScale.Portable.Role)">
+            <summary>
+            Equalses the specified other.
+            </summary>
+            <param name="other">The other.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Role.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="P:DragonScale.Portable.Role.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:DragonScale.Portable.Role.Type">
+            <summary>
+            Gets the type.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="T:DragonScale.Portable.Privilege">
+            <summary>
+            Privilege abstract class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Privilege.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Privilege"/> class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Privilege.#ctor(System.String,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Privilege"/> class.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Privilege.#ctor(System.String,System.Type,DragonScale.Portable.Privilege[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Privilege"/> class.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="type">The type.</param>
+            <param name="privileges">The privileges.</param>
+        </member>
+        <member name="T:DragonScale.Portable.Privilege`1">
+            <summary>
+            Privilege class.
+            </summary>
+            <typeparam name="T">The type of privilege.</typeparam>
+        </member>
+        <member name="M:DragonScale.Portable.Privilege`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Privilege`1"/> class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Privilege`1.#ctor(System.String,DragonScale.Portable.Privilege[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Privilege`1"/> class.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="privileges">The privileges.</param>
+        </member>
+        <member name="T:DragonScale.Portable.Guard">
+            <summary>
+            Guard static class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Guard.ArgumentNotNull(System.Object,System.String)">
+            <summary>
+            Ensure the argument isn't null.
+            </summary>
+            <param name="argumentValue">The argument value.</param>
+            <param name="argumentName">The name of the argument.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="argumentValue"/> is a null reference.</exception>
+        </member>
+        <member name="M:DragonScale.Portable.Guard.ArgumentNotNullOrEmptyString(System.String,System.String)">
+            <summary>
+            Ensure a string argument isn't null or empty.
+            </summary>
+            <param name="argumentValue">The argument value.</param>
+            <param name="argumentName">The name of the argument.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="argumentValue"/> is a null reference or <see cref="F:System.String.Empty"/>.</exception>
+        </member>
+        <member name="M:DragonScale.Portable.Guard.ArgumentNotNullOrTrimedEmptyString(System.String,System.String)">
+            <summary>
+            Ensure a string argument isn't null or trimed empty.
+            </summary>
+            <param name="argumentValue">The argument value.</param>
+            <param name="argumentName">The name of the argument.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="argumentValue"/> is a null reference or trimed <see cref="F:System.String.Empty"/>.</exception>
+        </member>
+        <member name="T:DragonScale.Portable.EventHandler`2">
+            <summary>
+            Defines the EventHandler for the first-level member in event model.
+            </summary>
+            <typeparam name="TSender"></typeparam>
+            <typeparam name="TEventArgs"></typeparam>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:DragonScale.Portable.PropertyChangedCallback">
+            <summary>
+            PropertyChangedCallback delegate.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:DragonScale.Portable.PropertyChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:DragonScale.Portable.TransientAttribute">
+            <summary>
+            Transient attribute for non-serialize properties and fields in format process.
+            </summary>
+        </member>
+        <member name="T:DragonScale.Portable.Toolbox.DebugLogger">
+            <summary>
+            DebugLogger class using Debug.WriteLine.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Toolbox.DebugLogger.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Toolbox.DebugLogger"/> class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Toolbox.DebugLogger.RaiseLog(System.String,System.Int32)">
+            <summary>
+            Logs using the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="level">The default level is 10.</param>
+        </member>
+        <member name="T:DragonScale.Portable.Exceptions.RuntimeException">
+            <summary>
+            Runtime exception.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Exceptions.RuntimeException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Exceptions.RuntimeException"/> class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Exceptions.RuntimeException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Exceptions.RuntimeException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:DragonScale.Portable.Exceptions.RuntimeException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Exceptions.RuntimeException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="T:DragonScale.Portable.Formatter">
+            <summary>
+            Formatter abstract class.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.Formatter.ToBytes(System.Object)">
+            <summary>
+            To the bytes.
+            </summary>
+            <param name="obj">The obj.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatter.ToObject(System.Byte[],System.Type)">
+            <summary>
+            To the object.
+            </summary>
+            <param name="bytes">The bytes.</param>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Portable.Formatter.ToObject(System.IO.Stream,System.Type)">
+            <summary>
+            To the object.
+            </summary>
+            <param name="stream">The stream.</param>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="T:DragonScale.Portable.DescriptionAttribute">
+            <summary>
+            Description attribute.
+            </summary>
+        </member>
+        <member name="M:DragonScale.Portable.DescriptionAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.DescriptionAttribute"/> class.
+            </summary>
+            <param name="detail">The detail.</param>
+        </member>
+        <member name="P:DragonScale.Portable.DescriptionAttribute.Detail">
+            <summary>
+            Gets or sets the detail.
+            </summary>
+            <value>
+            The detail.
+            </value>
+        </member>
+        <member name="T:DragonScale.Portable.Collections.BitArray">
+            <summary>
+            Word Aligned Hybrid BitArray.
+            </summary>
+        </member>
+    </members>
+</doc>

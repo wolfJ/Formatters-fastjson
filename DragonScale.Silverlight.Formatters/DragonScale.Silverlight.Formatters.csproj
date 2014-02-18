@@ -29,12 +29,13 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Bin\Debug</OutputPath>
+    <OutputPath>..\Dependance\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Dependance\Debug\DragonScale.Silverlight.Formatters.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -48,7 +49,6 @@
     <DocumentationFile>..\OutputDlls\DragonScale.Silverlight.Formatters.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DragonScale.Portable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="mscorlib" />
     <Reference Include="system" />
   </ItemGroup>
@@ -61,6 +61,10 @@
     <ProjectReference Include="..\..\DragonScalePortable\trunk\DragonScale.Portable\Frameworks\DragonScale.Portable.Formatters\DragonScale.Portable.Formatters.csproj">
       <Project>{3C9CC0B8-BDC4-46A8-909E-40D4981F4A40}</Project>
       <Name>DragonScale.Portable.Formatters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DragonScale.Portable\DragonScale.Portable.csproj">
+      <Project>{26AF7938-DB1A-4426-A9DE-C76918D93342}</Project>
+      <Name>DragonScale.Portable</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />

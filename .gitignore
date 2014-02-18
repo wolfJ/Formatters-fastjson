@@ -108,3 +108,4 @@
 /DragonScale.Windows.Formatters/obj/Release/DragonScale.Windows.Formatters.pdb
 /OutputDlls
 /*.suo
+/DragonScale.Portable/obj

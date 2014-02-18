@@ -33,13 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DragonScale.Console">
-      <HintPath>C:\Users\wolf\Desktop\RoleGame\RoleGame\Dependencies\DragonScale.Console.dll</HintPath>
-    </Reference>
-    <Reference Include="DragonScale.Portable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Dependance\DragonScaleFramework\trunk\Debug\DragonScale.Portable.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -63,13 +56,14 @@
       <Project>{3C9CC0B8-BDC4-46A8-909E-40D4981F4A40}</Project>
       <Name>DragonScale.Portable.Formatters</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DragonScale.Portable\DragonScale.Portable.csproj">
+      <Project>{26AF7938-DB1A-4426-A9DE-C76918D93342}</Project>
+      <Name>DragonScale.Portable</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DragonScale.Windows.Formatters\DragonScale.Windows.Formatters.csproj">
       <Project>{CAA75EC5-E855-4923-A1F1-7A0736D633BC}</Project>
       <Name>DragonScale.Windows.Formatters</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DragonScale.Portable.Formatters.Test.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

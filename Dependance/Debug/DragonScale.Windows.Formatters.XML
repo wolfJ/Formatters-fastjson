@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DragonScale.Windows.Formatters</name>
+    </assembly>
+    <members>
+        <member name="T:DragonScale.Windows.Formatters.FullJsonFormatterSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DragonScale.Windows.Formatters.FullJsonFormatterSettings.Default">
+            <summary>
+            Gets the default.
+            </summary>
+            <value>
+            The default.
+            </value>
+        </member>
+        <member name="T:DragonScale.Windows.Formatters.FullContentProvider">
+            <summary>
+            Full Content Provider
+            </summary>
+        </member>
+        <member name="M:DragonScale.Windows.Formatters.FullContentProvider.#ctor(DragonScale.Portable.Formatters.Settings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DragonScale.Portable.Formatters.DefaultContentProvider"/> class.
+            </summary>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="M:DragonScale.Windows.Formatters.FullContentProvider.RaiseGetProperties(System.Type)">
+            <summary>
+            Raises on the get properties process.
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DragonScale.Windows.Formatters.FullContentProvider.RaiseGetFields(System.Type)">
+            <summary>
+            Raises on the get the get fields process.
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
